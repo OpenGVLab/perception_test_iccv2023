@@ -17,9 +17,10 @@ For the audio features, we use the BEATs model as feature extractor and adopt it
 
 | Features | Modality | Download Link |
 |---|---|---|
-| BEATs_iter2 | Audio | Download |
-| UMT-L Sth Sth-V2 ft | Video | Download |
-| UMT-L Sth Sth-V2 | Video | Download |
+| BEATs_iter2 | Audio | [Download](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/pt_tsl_beats_iter3_feature.zip) |
+| Ego4d_verb | Video | [Download](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/pt_tal_videomae_large_ego4d_verb_feature_s4.zip) |
+| UMT-L Sth Sth-V2 ft | Video | [Download](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/pt_tal_umt_large_sthv2_perception_test_ft1_feature_s2.zip) |
+| UMT-L Sth Sth-V2 | Video | [Download](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/pt_tal_umt_large_sthv2_feature_s4.zip) |
 
 
 ## Temporal Sound Localisation  
@@ -58,9 +59,9 @@ We release the checkpoint in the below table.
 
 | Method | Task | Download |
 |---|---|---|
-| BEATs + UMT ft | tsl | ckpt \| log |
-| BEATs + UMT | tsl | ckpt \| log |
-| BEATs + UMT ft | tal | ckpt \| log |
+| BEATs + UMT ft | tsl | [ckpt](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/tsl_multi_ft_epoch20.pth.tar ) |
+| BEATs + UMT | tsl | [ckpt](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/tsl_multi_epoch20.pth.tar ) |
+| BEATs + UMT\&VideoMAE | tal | ckpt |
 
 
 ## Contact  
