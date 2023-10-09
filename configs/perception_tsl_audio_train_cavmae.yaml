@@ -1,0 +1,58 @@
+dataset_name: perception
+train_split: ['train']
+val_split: ['valid']
+dataset: {
+  json_file: ./data/pt/challenge_sound_localisation_train.json,
+  feat_folder: ./data/pt/sound_localisation_cavmae/train,
+  file_prefix: v_,
+  file_ext: .npy,
+  num_classes: 12,
+  input_dim: 768,
+  feat_stride: 16,
+  num_frames: 16,
+  default_fps: 768,
+  trunc_thresh: 0.5,
+  crop_ratio: [0.9, 1.0],
+  # upsample the features to a fixed length of 192
+  max_seq_len: 192,
+  force_upsampling: True,
+  input_modality: audio,
+  mm_feat_folder: null,
+  task: sound_localisation,
+}
+model: {
+  fpn_type: identity,
+  max_buffer_len_factor: 1.0,
+  # 192 - 96 - 48 - 24 - 12 - 6
+  n_mha_win_size: [7, 7, 7, 7, 7, -1],
+  # shrink the model for reduced input feature channels
+  n_head: 8,
+  embd_dim: 512,
+  fpn_dim: 512,
+  head_dim: 512,
+  use_abs_pe: True,
+}
+opt: {
+  learning_rate: 0.001,
+  epochs: 50,
+  weight_decay: 0.05,
+}
+loader: {
+  batch_size: 16,
+}
+
+train_cfg: {
+  init_loss_norm: 250,
+  clip_grad_l2norm: 1.0,
+  cls_prior_prob: 0.01,
+  center_sample: radius,
+  center_sample_radius: 1.5,
+}
+test_cfg: {
+  pre_nms_topk: 5000,
+  max_seg_num: 500,
+  min_score: 0.001,
+  nms_sigma : 0.4,
+  multiclass_nms: True,
+}
+output_folder: ./ckpt/
