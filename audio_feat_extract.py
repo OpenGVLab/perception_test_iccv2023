@@ -119,8 +119,7 @@ def cavmae_feat_extract(audio_dir, split_ls, feat_dir, model_dir):
 
 
 if __name__ == "__main__":
-    audio_dir = "p2:s3://perception/audios/"
-    # audio_dir = "/mnt/petrelfs/yujiashuo/dataset/pt/audios/"
+    audio_dir = "/mnt/petrelfs/yujiashuo/dataset/pt/audios/"
     feat_dir = "./data/pt/sound_localisation_beats/missing_audio/"
     # split_ls = './data/pt/sound_localisation_valid_audio_features/'
     with open('missing_audio.txt', 'r') as f:

@@ -11,12 +11,16 @@ Please refer to INSTALL.md to install the prerequisite packages.
 
 ## Feature Extraction  
 
-For the video feature, we use the UMT large model pre-trained on Something Something-V2 and fine-tuned on the perception test temporal action localisation training set. For the audio features, we use the BEATs model as feature extractor and adopt its iter3+ checkpoints pre-trained on the AudioSet-2M dataset.
+For the video feature, we use the UMT large model pre-trained on Something Something-V2 and fine-tuned on the perception test temporal action localisation training set. 
+
+For the audio features, we use the BEATs model as feature extractor and adopt its iter3+ checkpoints pre-trained on the AudioSet-2M dataset. we provide scripts to extract BEATs and CAV-MAE (although not used), please use `python audio_feat_extract.py` to extract audio features.
 
 | Features | Modality | Download Link |
+|---|---|---|
 | BEATs_iter2 | Audio | Download |
 | UMT-L Sth Sth-V2 ft | Video | Download |
 | UMT-L Sth Sth-V2 | Video | Download |
+
 
 ## Temporal Sound Localisation  
 
@@ -53,9 +57,11 @@ Inference on the test set:
 We release the checkpoint in the below table.  
 
 | Method | Task | Download |
+|---|---|---|
 | BEATs + UMT ft | tsl | ckpt \| log |
 | BEATs + UMT | tsl | ckpt \| log |
-| BEATs + UMT ft | tal | ckpt \| log |  
+| BEATs + UMT ft | tal | ckpt \| log |
+
 
 ## Contact  
 
