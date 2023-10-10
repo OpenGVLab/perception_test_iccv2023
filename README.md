@@ -37,19 +37,27 @@ For the audio features, we use the BEATs model as feature extractor and adopt it
 
 ### Training  
 
+`cd ./tsl/` 
+
 `python train.py configs/perception_tsl_multi_train.yaml`  
 
 ### Inference  
 
 Inference on the validation set:  
 
+`cd ./tsl/`  
+
 `python eval.py configs/perception_tsl_multi_valid.yaml ./ckpt/XXX -epoch=XX`  
 
 Inference on the test set:  
 
+`cd ./tsl/` 
+
 `python eval.py configs/perception_tsl_multi_test.yaml ./ckpt/XXX -epoch=XX --saveonly`  
 
 ## Temporal Action Localisation  
+
+`cd ./tal/` 
 
 `python train.py configs/perception_tal_multi_train.yaml`  
 
@@ -57,9 +65,13 @@ Inference on the test set:
 
 Inference on the validation set:  
 
+`cd ./tal/` 
+
 `python eval.py configs/perception_tal_multi_valid.yaml ./ckpt/XXX -epoch=XX`  
 
 Inference on the test set:  
+
+`cd ./tal/` 
 
 `python eval.py configs/perception_tal_multi_test.yaml ./ckpt/XXX -epoch=XX --saveonly`  
 
@@ -67,11 +79,12 @@ Inference on the test set:
 
 We release the checkpoint in the below table.  
 
-| Method | Task | Download |
-|---|---|---|
-| BEATs + UMT ft | tsl | [ckpt](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/tsl_multi_ft_epoch20.pth.tar ) |
-| BEATs + UMT | tsl | [ckpt](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/tsl_multi_epoch20.pth.tar ) |
-| BEATs + UMT\&VideoMAE | tal | [ckpt](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/tal_multi.pth.tar) |
+| Method | Task | mAP (Valid) | Download |
+|---|---|---|---|
+| BEATs + UMT | tsl | 26.70 | [ckpt](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/tsl_multi_epoch20.pth.tar ) |
+| BEATs + UMT ft | tsl | 39.25 | [ckpt](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/tsl_multi_ft_epoch20.pth.tar ) |
+| BEATs + UMT | tal | 44.14 | [ckpt](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/tal_multi_umtonly.pth.tar) |
+| BEATs + UMT\&VideoMAE | tal | 46.75 | [ckpt](https://pjlab-gvm-data.oss-cn-shanghai.aliyuncs.com/opengvlab/perception_test_iccv2023/tal_multi.pth.tar) |
 
 
 ## Contact  
