@@ -1,0 +1,123 @@
+dataset_name: perception_tal_mm
+model_name: LocPointTransformerMM1
+train_split: [ 'train' ]
+val_split: [ 'valid' ]
+dataset: {
+  json_file: ./data/pt/action_localisation_valid.json,
+  feat_folder_list: [
+    # '/mnt/petrelfs/chenguo/data/perception_test/features/tal_video_tsp_feature_s16',
+    # '/mnt/petrelfs/chenguo/data/perception_test/features/tal_clip_feature_s4',
+    # '/mnt/petrelfs/chenguo/data/perception_test/features/tal_slowonly_k710_feature_s8',
+    # '/mnt/petrelfs/chenguo/data/perception_test/features/tal_clip_l14_feature_s2',
+    # '/mnt/petrelfs/chenguo/data/perception_test/features/tal_umt_large_feature_s4',
+    # '/mnt/petrelfs/chenguo/data/perception_test/features/tal_videomae_large_feature_s4',
+    '/mnt/petrelfs/chenguo/data/perception_test/features/tal_videomae_large_ego4d_verb_feature_s4',
+#    '/mnt/petrelfs/chenguo/data/perception_test/features/tal_umt_large_sthv2_feature_s4_st2x2x2',
+    '/mnt/petrelfs/chenguo/data/perception_test/features/tal_umt_large_sthv2_feature_s4',
+    # '/mnt/petrelfs/chenguo/data/perception_test/features/tal_videomae_large_sthv2_feature_s4',
+    #    '/mnt/petrelfs/chenguo/data/perception_test/features/tal_videomae_large_ego4d_noun_feature_s4'
+  ],
+  file_prefix: v_,
+  file_ext_list: [ '.pt',
+                   '.pt',
+                  #  '.pt',
+                  #  '.pt',
+                  #  '.pt',
+                  #  '.pt',
+  ],
+  num_classes: 63,
+  input_dim: [ 1024 ,
+              #  1024,
+               1024,
+              #  1024,
+              #  1024,
+              #  1024,
+               768,
+               768,
+
+  ],
+  feat_stride_list: [ 
+    # 1,
+                      # 2,
+                      2,
+                      # 2,
+                      # 2,
+                      2,
+  ],
+  num_frames_list: [ 
+    # 1,
+                    #  2,
+                     2,
+                    #  2,
+                    #  2,
+                     2,
+  ],
+  default_fps: 15,
+  trunc_thresh: 0.5,
+  crop_ratio: [ 0.9, 1.0 ],
+  # upsample the features to a fixed length of 192
+  max_seq_len: 192,
+  force_upsampling: True,
+  input_modality: multi,
+#  mm_feat_folder: /mnt/petrelfs/share_data/yujiashuo/sound_localisation_beats_iter1/valid,
+#  mm_feat_folder: /mnt/petrelfs/share_data/yujiashuo/sound_localisation_cavmae/valid,
+  mm_feat_folder: /mnt/petrelfs/share_data/yujiashuo/sound_localisation_beats/valid,
+  task: action_localisation,
+}
+model: {
+  backbone_type: 'convTransformerMM1',
+  input_dim: [ 1024 ,
+               1024,
+              #  1024,
+              #  1024,
+              #  1024,
+              #  1024,
+               768,
+               768,
+  ],
+  fpn_type: identity,
+  max_buffer_len_factor: 1.0,
+  # 192 - 96 - 48 - 24 - 12 - 6
+  n_mha_win_size: [ 7, 7, 7, 7, 7, -1 ],
+  # shrink the model for reduced input feature channels
+  n_head: 16,
+  embd_dim: [ 1024 ,
+              1024,
+              # 1024,
+              # 1024 ,
+              # 1024,
+              # 1024,
+              768,
+              768,
+
+
+  ],
+  fused_embd: 1024,
+  fpn_dim: 1024,
+  head_dim: 1024,
+  use_abs_pe: True,
+}
+opt: {
+  learning_rate: 0.001,
+  epochs: 50,
+  weight_decay: 0.05,
+}
+loader: {
+  batch_size: 16,
+}
+
+train_cfg: {
+  init_loss_norm: 250,
+  clip_grad_l2norm: 1.0,
+  cls_prior_prob: 0.01,
+  center_sample: radius,
+  center_sample_radius: 1.5,
+}
+test_cfg: {
+  pre_nms_topk: 5000,
+  max_seg_num: 500,
+  min_score: 0.001,
+  nms_sigma: 0.4,
+  multiclass_nms: True,
+}
+output_folder: ./ckpt/
