@@ -13,7 +13,7 @@ Please refer to INSTALL.md to install the prerequisite packages.
 
 ### TAL  
 
-For the video features, we use the UMT large model pre-trained on Something Something-V2 and the VideoMAE model pre-trained on Ego4D-Verb dataset. These two features are concatenated before putting into the ActionFormer model during both training and inference stages.
+For the video features, we use the UMT large model pre-trained on Something Something-V2 and the VideoMAE model pre-trained on Ego4D-Verb dataset. The weights of Ego4d can be found [here](https://github.com/OpenGVLab/ego4d-eccv2022-solutions). These two features are concatenated before putting into the ActionFormer model during both training and inference stages.
 
 For the audio features, we use the BEATs model as feature extractor and adopt its iter3+ checkpoints pre-trained on the AudioSet-2M dataset. we provide scripts to extract BEATs and CAV-MAE (although not used), please use `python audio_feat_extract.py` to extract audio features.
 
