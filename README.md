@@ -19,7 +19,7 @@ For the audio features, we use the BEATs model as feature extractor and adopt it
 
 ### TSL  
 
-For the video feature, we use the UMT large model pre-trained on Something Something-V2 and fine-tuned on the perception test temporal action localisation training set. 
+For the video feature, we use the [UMT large model](https://github.com/OpenGVLab/unmasked_teacher) pre-trained on Something Something-V2 and fine-tuned on the perception test temporal action localisation training set. 
 
 For the audio features, we use the BEATs model as feature extractor and adopt its iter3+ checkpoints pre-trained on the AudioSet-2M dataset. we provide scripts to extract BEATs and CAV-MAE (although not used), please use `python audio_feat_extract.py` to extract audio features.
 
